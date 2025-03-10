@@ -11,7 +11,7 @@ on:
     - cron: '0 0,7 * * *'
 
 jobs:
-  checkin:
+  email-checkin:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4  # 更新到最新的 checkout 版本
