@@ -32,11 +32,11 @@ def qqemail(subject, email, text):
         except smtplib.SMTPException as e:
             print(f"邮件发送失败，第 {retries + 1} 次重试: {e}")
             retries += 1
-            time.sleep(120)
+            time.sleep(300)
         except Exception as e:
             print(f"发生未知错误，第 {retries + 1} 次重试: {e}")
             retries += 1
-            time.sleep(120)
+            time.sleep(300)
     print("达到最大重试次数，邮件发送失败。")
 
 if __name__ == "__main__":
