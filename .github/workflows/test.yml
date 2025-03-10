@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          
+
       - name: Debug Environment Variables
         run: |
           echo "SEND_ADDRESS: $SEND_ADDRESS"
@@ -41,5 +41,5 @@ jobs:
           SEND_SUBJECT: ${{ secrets.SEND_SUBJECT }}
           RECEIVE_ADDRESS: ${{ secrets.RECEIVE_ADDRESS }}
           SEND_BODY: ${{ secrets.SEND_BODY }}
-          STMP_KEY: ${{ secrets.STMP_KEY }}
+          SMTP_KEY: ${{ secrets.SMTP_KEY }}
           SEND_ADDRESS: ${{ secrets.SEND_ADDRESS }}
