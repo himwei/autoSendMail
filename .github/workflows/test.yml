@@ -7,8 +7,8 @@ on:
   pull_request:
     branches: [master]
   schedule:
-    # UTC时间 0点对应北京时间8点，7点对应北京时间15点
-    - cron: '0 0,7 * * *'
+    # 每天北京时间 8 点、13 点、15 点对应 UTC 时间 0 点、5 点、7 点
+    - cron: '0 0,5,7 * * *'
 
 jobs:
   email-checkin:
