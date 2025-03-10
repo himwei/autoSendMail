@@ -24,6 +24,16 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          
+      - name: Debug Environment Variables
+        run: |
+          echo "SEND_ADDRESS: $SEND_ADDRESS"
+          echo "SMTP_KEY: $SMTP_KEY"
+          echo "SEND_SUBJECT: $SEND_SUBJECT"
+          echo "RECEIVE_ADDRESS: $RECEIVE_ADDRESS"
+          echo "SEND_BODY: $SEND_BODY"
+
+
       - name: Execute Checkin
         run: |
           python3 ./main.py

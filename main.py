@@ -9,8 +9,9 @@ def qqemail(subject, email, text):
     retries = 0
     while retries < max_retries:
         try:
+            # 获取环境变量（注意 SMTP_KEY 拼写）
             EMAIL_ADDRESS = os.environ["SEND_ADDRESS"]
-            EMAIL_PASSWORD = os.environ["SMTP_KEY"]
+            EMAIL_PASSWORD = os.environ["SMTP_KEY"]  # 修正拼写
 
             context = ssl.create_default_context()
 
@@ -25,17 +26,17 @@ def qqemail(subject, email, text):
                 smtp.send_message(msg)
             print("邮件发送成功")
             return
-        except KeyError:
-            print("环境变量未正确设置，请检查 SEND_ADDRESS 和 SMTP_KEY 是否存在。")
+        except KeyError as e:
+            print(f"缺少环境变量: {e}")
             break
         except smtplib.SMTPException as e:
             print(f"邮件发送失败，第 {retries + 1} 次重试: {e}")
             retries += 1
-            time.sleep(5)  # 等待 5 秒后重试
+            time.sleep(5)
         except Exception as e:
             print(f"发生未知错误，第 {retries + 1} 次重试: {e}")
             retries += 1
-            time.sleep(5)  # 等待 5 秒后重试
+            time.sleep(5)
     print("达到最大重试次数，邮件发送失败。")
 
 if __name__ == "__main__":
@@ -44,5 +45,5 @@ if __name__ == "__main__":
         email = os.environ["RECEIVE_ADDRESS"]
         text = os.environ["SEND_BODY"]
         qqemail(subject, email, text)
-    except KeyError:
-        print("环境变量未正确设置，请检查 SEND_SUBJECT、RECEIVE_ADDRESS 和 SEND_BODY 是否存在。")
+    except KeyError as e:
+        print(f"缺少环境变量: {e}")
