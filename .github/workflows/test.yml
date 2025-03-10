@@ -1,4 +1,4 @@
-name: glados-checkin
+name: qq邮箱提醒workflows
 
 on:
   workflow_dispatch:  # 允许手动触发
