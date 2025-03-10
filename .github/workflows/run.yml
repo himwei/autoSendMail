@@ -1,8 +1,0 @@
-name: 'GitHub Actions CSDN Email Bot'
-
-于:
-  push:
-    分支: 
-      - master
-  schedule:
-    - cron: '0 14 * * *'
