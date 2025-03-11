@@ -27,6 +27,20 @@ jobs:
           RECEIVE_ADDRESS: ${{ secrets.RECEIVE_ADDRESS }}
           SEND_BODY: ${{ secrets.SEND_BODY }}
           SMTP_KEY: ${{ secrets.SMTP_KEY }}
-          SEND_ADDRESS: ${{ secrets.SEND_ADDRESS }}
-        run: python main.py
+          AppID: ${{ secrets.AppID }}
+          AppSecret: ${{ secrets.AppSecret }}
+          OpenId: ${{ secrets.OpenId }}
+          TemplateId: ${{ secrets.TemplateId }}
+        run: python emailSend.py
+      - name: Execute AutoSendWeChat
+        env:
+          SEND_SUBJECT: ${{ secrets.SEND_SUBJECT }}
+          RECEIVE_ADDRESS: ${{ secrets.RECEIVE_ADDRESS }}
+          SEND_BODY: ${{ secrets.SEND_BODY }}
+          SMTP_KEY: ${{ secrets.SMTP_KEY }}
+          AppID: ${{ secrets.AppID }}
+          AppSecret: ${{ secrets.AppSecret }}
+          OpenId: ${{ secrets.OpenId }}
+          TemplateId: ${{ secrets.TemplateId }}
+        run: python wechatSend.py
         
