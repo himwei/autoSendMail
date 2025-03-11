@@ -22,18 +22,6 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Execute AutoSendEmail
-        env:
-          SEND_ADDRESS: ${{ secrets.SEND_ADDRESS }}
-          SEND_SUBJECT: ${{ secrets.SEND_SUBJECT }}
-          RECEIVE_ADDRESS: ${{ secrets.RECEIVE_ADDRESS }}
-          SEND_BODY: ${{ secrets.SEND_BODY }}
-          SMTP_KEY: ${{ secrets.SMTP_KEY }}
-          AppID: ${{ secrets.AppID }}
-          AppSecret: ${{ secrets.AppSecret }}
-          OpenId: ${{ secrets.OpenId }}
-          TemplateId: ${{ secrets.TemplateId }}
-        run: python emailSend.py
       - name: Execute AutoSendWeChat
         env:
           SEND_ADDRESS: ${{ secrets.SEND_ADDRESS }}
@@ -46,4 +34,17 @@ jobs:
           OpenId: ${{ secrets.OpenId }}
           TemplateId: ${{ secrets.TemplateId }}
         run: python wechatSend.py
+        
+      - name: Execute AutoSendEmail
+        env:
+          SEND_ADDRESS: ${{ secrets.SEND_ADDRESS }}
+          SEND_SUBJECT: ${{ secrets.SEND_SUBJECT }}
+          RECEIVE_ADDRESS: ${{ secrets.RECEIVE_ADDRESS }}
+          SEND_BODY: ${{ secrets.SEND_BODY }}
+          SMTP_KEY: ${{ secrets.SMTP_KEY }}
+          AppID: ${{ secrets.AppID }}
+          AppSecret: ${{ secrets.AppSecret }}
+          OpenId: ${{ secrets.OpenId }}
+          TemplateId: ${{ secrets.TemplateId }}
+        run: python emailSend.py
         
