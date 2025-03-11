@@ -1,4 +1,4 @@
-name: Auto SendEmail
+name: Auto Send
 
 on:
   workflow_dispatch:  # 允许手动触发
@@ -20,9 +20,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Execute AutoSendEmail
         env:
+          SEND_ADDRESS: ${{ secrets.SEND_ADDRESS }}
           SEND_SUBJECT: ${{ secrets.SEND_SUBJECT }}
           RECEIVE_ADDRESS: ${{ secrets.RECEIVE_ADDRESS }}
           SEND_BODY: ${{ secrets.SEND_BODY }}
@@ -34,6 +36,7 @@ jobs:
         run: python emailSend.py
       - name: Execute AutoSendWeChat
         env:
+          SEND_ADDRESS: ${{ secrets.SEND_ADDRESS }}
           SEND_SUBJECT: ${{ secrets.SEND_SUBJECT }}
           RECEIVE_ADDRESS: ${{ secrets.RECEIVE_ADDRESS }}
           SEND_BODY: ${{ secrets.SEND_BODY }}
