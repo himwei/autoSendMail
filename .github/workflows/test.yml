@@ -4,7 +4,7 @@ on:
   workflow_dispatch:  # 允许手动触发
   schedule:
     # 北京时间 8 点、11 点、12 点、13 点、15 点 对应 UTC 时间 0 点、3 点、4 点、5 点、7 点
-    - cron: '0 0,1,3,4,5,7 * * *'
+    - cron: '0 0,1,3,4,5,7,23 * * *'
 
 jobs:
   email-checkin:
@@ -31,7 +31,8 @@ jobs:
           SMTP_KEY: ${{ secrets.SMTP_KEY }}
           AppID: ${{ secrets.AppID }}
           AppSecret: ${{ secrets.AppSecret }}
-          OpenId: ${{ secrets.OpenId }}
+          OpenId1: ${{ secrets.OpenId1 }}
+          OpenId2: ${{ secrets.OpenId2 }}
           TemplateId: ${{ secrets.TemplateId }}
         run: python wechatSend.py
         
@@ -44,7 +45,8 @@ jobs:
           SMTP_KEY: ${{ secrets.SMTP_KEY }}
           AppID: ${{ secrets.AppID }}
           AppSecret: ${{ secrets.AppSecret }}
-          OpenId: ${{ secrets.OpenId }}
+          OpenId1: ${{ secrets.OpenId1 }}
+          OpenId2: ${{ secrets.OpenId2 }}
           TemplateId: ${{ secrets.TemplateId }}
         run: python emailSend.py
         
